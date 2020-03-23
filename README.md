@@ -154,4 +154,4 @@ It would be awesome to convert the converter.jar to native for the top 3 platfor
 
 Imagining a wold where instead of adding Volume case objects that implement toLiters and fromLiters. We could instead define a conversion API similar to:
 
-![API Example](assets/api-example.png)
+![API Example][assets/api-example.png]
