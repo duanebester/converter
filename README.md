@@ -100,6 +100,8 @@ var result = Converter.convert(Array("100.0", "Celsius", "Fahrenheit", "212.0"))
 assert(result === "Correct")
 ```
 
+> Currently, we allow for answers rounded to the nearest 10th to return `Correct`.
+
 ## Cutting a release
 
 To release a new version, we need to create a tag and push it.
@@ -140,4 +142,35 @@ java -jar converter.jar 100.0 Celsius Fahrenheit 212.0
 ```
 java -jar converter.jar 100.0 Celsius Fahrenheit 200.0
 # Incorrect
+```
+
+## Future Considerations
+
+### GraalVM Native
+
+It would be awesome to convert the converter.jar to native for the top 3 platforms; Windows, Linux and macOS.
+
+### Magnet Pattern API
+
+Imagining a wold where instead of adding Volume case objects that implement toLiters and fromLiters. We could instead define a conversion API similar to:
+
+```
+val c = converter(Unit.Volume) {
+    volume("gallons") {
+        to("liters")(volume => List(volume, MULT, 3.8))
+        volume("cups") {
+            toParent(volume => List(volume, DIV, 16))
+            volume("tablespoons") {
+                toParent(volume => List(volume, DIV, 16))
+            }
+        }
+    } ~ volume("liters") {
+        to("liters")(volume => List(volume))
+    } ~ volume("cubic-feet") {
+        to("liters")(volume => List(volume, DIV, 28))
+        volume("cubic-inches") {
+            toParent(volume => List(volume, DIV, 1730))
+        }
+    }
+}
 ```
