@@ -12,7 +12,7 @@ CI tests run on pushes to master and every pull request.
 
 ## Building
 
-Check out the project and run `sbt assembly`
+Check out the project and run `sbt assembly`.
 
 Now you can run conversion checks:
 
@@ -31,7 +31,7 @@ Invalid
 
 #### Adding a new Temperature conversion:
 
-1. Create a case object that implements the [Temperature Trait](src/main/scala/converter/Temperature.scala).
+1. Create a case object that implements the [Temperature Trait](src/main/scala/converter/Temperature.scala#L3).
 1. Add the case object to the [Temperature Object](src/main/scala/converter/Temperature.scala#L8) pattern match.
 
 This trait has two methods that need to be implemented; `toCelsius` and `fromCelsius`.
@@ -57,7 +57,7 @@ object Temperature {
 
 #### Adding a new Volume conversion:
 
-1. Create a case object that implements the [Volume Trait](src/main/scala/converter/Volume.scala).
+1. Create a case object that implements the [Volume Trait](src/main/scala/converter/Volume.scala#L3).
 1. Add the case object to the [Volume Object](src/main/scala/converter/Volume.scala#L8) pattern match.
 
 This trait has two methods that need to be implemented; `toLiters` and `fromLiters`.
@@ -81,6 +81,23 @@ object Volume {
     case _              => None
   }
 }
+```
+
+### Testing Locally
+
+Tests are located in [ConverterSpec](src/test/scala/converter/ConverterSpec.scala).
+
+Please place tests in one of the following three categories:
+
+1. "Converter.convert" should "return Invalid for invalid args"
+1. "Converter.convert" should "return Incorrect"
+1. "Converter.convert" should "return Correct"
+
+Tests will likely resemble the following format:
+
+```
+var result = Converter.convert(Array("100.0", "Celsius", "Fahrenheit", "212.0"))
+assert(result === "Correct")
 ```
 
 ## Cutting a release
