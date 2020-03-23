@@ -144,7 +144,21 @@ java -jar converter.jar 100.0 Celsius Fahrenheit 200.0
 # Incorrect
 ```
 
-## Future Considerations
+## Future Considerations & Improvements
+
+Ordered by priority
+
+### Extended Test Cases
+
+More tests are always better
+
+### File Checking Support
+
+Checking conversions line-by-line is tedious. It would be great for the program to accept a CSV or text file with multiple rows, and then output a new file with the additional fields: `Correct`, `Incorrect`, or `Invalid`.
+
+### Enhanced CLI
+
+Wrapping this project into a proper CLI program, like [PicoCLI](https://picocli.info/) to make it more interactive and user friendly.
 
 ### GraalVM Native
 
@@ -155,3 +169,5 @@ It would be awesome to convert the converter.jar to native for the top 3 platfor
 Imagining a world where instead of adding Volume case objects that implement `toLiters` and `fromLiters`. We could instead define a conversion API similar to:
 
 ![API Example](assets/api-example.png)
+
+This gives the developer a better experience when adding new conversions. The API would become easier for "sub-volumes" to just call their parent's conversion if available.
