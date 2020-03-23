@@ -1,5 +1,7 @@
 # Converter Project
 
+![Scala CI](https://github.com/duanebester/converter/workflows/Scala%20CI/badge.svg)
+
 Project that converts various temperatures and volumes.
 
 ## Testing
