@@ -154,23 +154,4 @@ It would be awesome to convert the converter.jar to native for the top 3 platfor
 
 Imagining a wold where instead of adding Volume case objects that implement toLiters and fromLiters. We could instead define a conversion API similar to:
 
-```
-val c = converter(Unit.Volume) {
-    volume("gallons") {
-        to("liters")(volume => List(volume, MULT, 3.8))
-        volume("cups") {
-            toParent(volume => List(volume, DIV, 16))
-            volume("tablespoons") {
-                toParent(volume => List(volume, DIV, 16))
-            }
-        }
-    } ~ volume("liters") {
-        to("liters")(volume => List(volume))
-    } ~ volume("cubic-feet") {
-        to("liters")(volume => List(volume, DIV, 28))
-        volume("cubic-inches") {
-            toParent(volume => List(volume, DIV, 1730))
-        }
-    }
-}
-```
+![API Example](assets/api-example.png)
