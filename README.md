@@ -12,7 +12,7 @@ CI tests run on pushes to master and every pull request.
 
 Check out the project and run `sbt assembly`
 
-Now you can run conversions like:
+Now you can run conversion checks:
 
 ```
 % java -jar target/scala-2.13/converter.jar 100.0 Celsius Fahrenheit 212.0
@@ -58,11 +58,11 @@ java -jar converter.jar [Input Number] [Input Unit] [Target Unit] [Target Number
 #### Examples
 
 ```
-java -jar converter.jar 100.0 Celsius Fahrentheit 212.0
+java -jar converter.jar 100.0 Celsius Fahrenheit 212.0
 # Correct
 ```
 
 ```
-java -jar converter.jar 100.0 Celsius Fahrentheit 200.0
+java -jar converter.jar 100.0 Celsius Fahrenheit 200.0
 # Incorrect
 ```
