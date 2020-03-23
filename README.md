@@ -27,6 +27,62 @@ Incorrect
 Invalid
 ```
 
+## Developing
+
+#### Adding a new Temperature conversion:
+
+1. Create a case object that implements the [Temperature Trait](src/main/scala/converter/Temperature.scala).
+1. Add the case object to the [Temperature Object](src/main/scala/converter/Temperature.scala#L8) pattern match.
+
+This trait has two methods that need to be implemented; `toCelsius` and `fromCelsius`.
+
+```
+trait Temperature {
+  def toCelsius(in: Double): Double
+  def fromCelsius(in: Double): Double
+}
+```
+
+```
+object Temperature {
+  def valueOf(string: String) = string match {
+    case "Kelvin"     => Some(Kelvin)
+    case "Celsius"    => Some(Celsius)
+    case "Rankine"    => Some(Rankine)
+    case "Fahrenheit" => Some(Fahrenheit)
+    case _            => None
+  }
+}
+```
+
+#### Adding a new Volume conversion:
+
+1. Create a case object that implements the [Volume Trait](src/main/scala/converter/Volume.scala).
+1. Add the case object to the [Volume Object](src/main/scala/converter/Volume.scala#L8) pattern match.
+
+This trait has two methods that need to be implemented; `toLiters` and `fromLiters`.
+
+```
+trait Volume {
+  def toLiters(in: Double): Double
+  def fromLiters(in: Double): Double
+}
+```
+
+```
+object Volume {
+  def valueOf(string: String) = string match {
+    case "liters"       => Some(Liters)
+    case "gallons"      => Some(Gallons)
+    case "tablespoons"  => Some(Tablespoons)
+    case "cups"         => Some(Cups)
+    case "cubic-inches" => Some(CubicInches)
+    case "cubic-feet"   => Some(CubicFeet)
+    case _              => None
+  }
+}
+```
+
 ## Cutting a release
 
 To release a new version, we need to create a tag and push it.
